@@ -14,7 +14,7 @@ const createWindow = () => {
     }
   })
 
-  win.loadFile('login.html')
+  win.loadFile('src/renderer/pages/login.html')
 }
 
 app.whenReady().then(() => {
@@ -24,7 +24,7 @@ app.whenReady().then(() => {
     currentUser = username
     const webContents = event.sender
     const win = BrowserWindow.fromWebContents(webContents)
-    win.loadFile('launcher.html')
+    win.loadFile('src/renderer/pages/launcher.html')
   })
 
   ipcMain.handle('get-username', () => {
