@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'" />
+  <title>Launcher</title>
+  <link rel="stylesheet" href="../styles/launcher.css" />
+</head>
+
+<body>
+  <div class="launcher-container">
+    <div class="welcome-box">
+      <p id="welcome" class="welcome-text">Bienvenido ...</p>
+    </div>
+
+    <button id="playBtn" class="play-btn">
+      PLAY
+    </button>
+
+    <div class="version-selector">
+      <select id="versionSelect" class="version-select">
+        <option value="1.20.4">Minecraft 1.20.4</option>
+        <option value="1.20.1">Minecraft 1.20.1</option>
+        <option value="1.19.4">Minecraft 1.19.4</option>
+        <option value="1.18.2">Minecraft 1.18.2</option>
+        <option value="1.16.5">Minecraft 1.16.5</option>
+        <option value="1.8.9">Minecraft 1.8.9</option>
+      </select>
+      <div class="dropdown-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M6 9l6 6 6-6" />
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <script src="../js/launcher.js"></script>
+</body>
+
+</html>
