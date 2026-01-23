@@ -4,24 +4,50 @@
 <head>
   <meta charset="UTF-8" />
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'" />
-  <title>Login - Minecraft Launcher</title>
+  <title>Mine-Launcher</title>
   <link rel="stylesheet" href="../styles/login.css" />
 </head>
 
 <body>
   <div class="login-container">
-    <div class="input-container">
-      <label for="username">Username</label>
+    <div class="logo">
+      <div class="logo-icon">
+        <img src="../../assets/images/logo.png" alt="Mine-Launcher Logo" class="logo-img" />
+      </div>
+      <h1>MINE-LAUNCHER</h1>
+    </div>
+
+    <div class="input-group">
+      <span class="icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white"
+          stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+          <circle cx="12" cy="7" r="4"></circle>
+        </svg>
+      </span>
       <input type="text" id="username" placeholder="Username" />
     </div>
-    <div class="input-container">
-      <label for="password">Password</label>
+
+    <div class="input-group">
+      <span class="icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white"
+          stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+          <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+        </svg>
+      </span>
       <input type="password" id="password" placeholder="Password" />
     </div>
-    <div class="input-container">
-      <button id="loginBtn">Aceptar</button>
+
+    <button id="loginBtn" class="login-btn">Aceptar</button>
+
+    <div class="footer-links">
+      <a href="#">Forgot Password?</a>
+      <span>•</span>
+      <a href="#">Create Account</a>
     </div>
   </div>
+
   <script src="../js/login.js"></script>
 </body>
 
