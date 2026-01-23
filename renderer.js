@@ -1,9 +1,9 @@
-const information = document.getElementById('info')
-information.innerText = `This app is using Chrome (v${window.versions.chrome()}), Node.js (v${window.versions.node()}), and Electron (v${window.versions.electron()})`
+const loginBtn = document.getElementById('loginBtn')
+const usernameInput = document.getElementById('username')
 
-const func = async () => {
-  const response = await window.versions.ping()
-  console.log(response)
-}
-
-func()
+loginBtn.addEventListener('click', () => {
+  const username = usernameInput.value
+  if (username) {
+    window.api.login(username)
+  }
+})

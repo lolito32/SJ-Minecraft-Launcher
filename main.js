@@ -1,6 +1,8 @@
 const { app, BrowserWindow, ipcMain } = require('electron/main')
 const path = require('node:path')
 
+let currentUser = ''
+
 const createWindow = () => {
   const win = new BrowserWindow({
     width: 500,
@@ -12,11 +14,23 @@ const createWindow = () => {
     }
   })
 
-  win.loadFile('index.html')
+  win.loadFile('login.html')
 }
 
 app.whenReady().then(() => {
   ipcMain.handle('ping', () => 'pong')
+
+  ipcMain.on('login', (event, username) => {
+    currentUser = username
+    const webContents = event.sender
+    const win = BrowserWindow.fromWebContents(webContents)
+    win.loadFile('launcher.html')
+  })
+
+  ipcMain.handle('get-username', () => {
+    return currentUser
+  })
+
   createWindow()
 
   app.on('activate', () => {
