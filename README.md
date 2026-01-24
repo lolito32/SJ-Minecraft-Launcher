@@ -1,1 +1,1 @@
-# SJ Minecraft Launcher
+# SJ-Minecraft-Launcher
