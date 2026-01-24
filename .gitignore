@@ -1,2 +1,37 @@
-package-lock.json
+# Dependency directories
 node_modules/
+
+# Build outputs
+dist/
+out/
+*.exe
+*.o
+*.obj
+*.pdb
+*.ilk
+*.exp
+*.lib
+
+# Minecraft runtime files (Backend)
+src/backend/versions/
+src/backend/libraries/
+src/backend/assets/
+src/backend/natives/
+src/backend/saves/
+src/backend/screenshots/
+src/backend/logs/
+src/backend/resourcepacks/
+src/backend/options.txt
+src/backend/usercache.json
+src/backend/launcher_profiles.json
+src/backend/temp_version.json
+src/backend/output/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Debug logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
