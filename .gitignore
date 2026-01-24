@@ -11,6 +11,7 @@ out/
 *.ilk
 *.exp
 *.lib
+*.iss
 
 # Minecraft runtime files (Backend)
 src/backend/versions/
