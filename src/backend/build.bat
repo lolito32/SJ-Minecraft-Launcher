@@ -1,0 +1,1 @@
+gcc src/main.c src/downloader.c src/launcher.c lib/cjson/cJSON.c -Ilib/cjson -Isrc -lcurl -o backend
