@@ -1,4 +1,4 @@
 # SJ-Minecraft-Launcher
 
-npm run dev for initialize
+"npm run dev" for initialize
 idk
