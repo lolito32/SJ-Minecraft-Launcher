@@ -8,14 +8,23 @@ class BackendManager {
     }
 
     launch(version, username) {
-        const backendPath = path.join(__dirname, '..', 'backend', 'backend.exe');
+        let backendDir = path.join(__dirname, '..', 'backend');
+        let backendPath = path.join(backendDir, 'backend.exe');
+
+        // Fix for packaged app (ASAR)
+        if (backendPath.toLowerCase().includes('app.asar')) {
+            backendPath = backendPath.replace(/app\.asar/g, 'app.asar.unpacked');
+            backendDir = backendDir.replace(/app\.asar/g, 'app.asar.unpacked');
+        }
+
         console.log(`Launching backend from: ${backendPath}`);
+        console.log(`CWD: ${backendDir}`);
 
         this.backendProcess = spawn(backendPath, [
             '--version', version,
             '--username', username
         ], {
-            cwd: path.join(__dirname, '..', 'backend')
+            cwd: backendDir
         });
 
         this.backendProcess.stdout.on('data', (data) => {

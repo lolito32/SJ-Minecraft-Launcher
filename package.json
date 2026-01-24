@@ -1,20 +1,42 @@
 {
   "name": "launcher-minecraft",
   "version": "1.0.0",
-  "description": "",
+  "description": "SJ Minecraft Launcher",
   "main": "src/main/main.js",
   "scripts": {
     "dev": "electron .",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "electron-builder"
   },
-  "keywords": [],
-  "author": "",
+  "author": "SJ",
   "license": "ISC",
   "devDependencies": {
     "electron": "^40.0.0",
+    "electron-builder": "^26.4.0",
     "standard": "^17.1.2"
   },
   "eslintConfig": {
     "extends": "standard"
+  },
+  "build": {
+    "appId": "com.sj.minecraft.launcher",
+    "productName": "SJ Minecraft Launcher",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "src/main/**/*",
+      "src/renderer/**/*",
+      "src/backend/backend.exe",
+      "package.json",
+      "assets/**/*",
+      "icon.ico"
+    ],
+    "asarUnpack": [
+      "src/backend/backend.exe"
+    ],
+    "win": {
+      "target": "dir",
+      "icon": "icon.ico"
+    }
   }
 }

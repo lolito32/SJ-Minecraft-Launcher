@@ -10,10 +10,12 @@
 #include "launcher.h"
 
 #define MANIFEST_URL "https://piston-meta.mojang.com/mc/game/version_manifest_v2.json"
-#define VERSIONS_DIR "versions"
-#define LIBRARIES_DIR "libraries"
-#define ASSETS_DIR "assets"
-#define NATIVES_DIR "natives"
+
+char BASE_DIR[512];
+char VERSIONS_DIR[512];
+char LIBRARIES_DIR[512];
+char ASSETS_DIR[512];
+char NATIVES_DIR[512];
 
 void send_json(const char *type, const char *message, int progress) {
     cJSON *root = cJSON_CreateObject();
@@ -78,11 +80,25 @@ void ensure_parent_dir_exists(const char *filepath) {
     }
 }
 
-void ensure_version_dirs_exist(const char *version_id) {
+void init_paths() {
+    const char *appdata = getenv("APPDATA");
+    if (appdata) {
+        snprintf(BASE_DIR, sizeof(BASE_DIR), "%s\\MiLauncher", appdata);
+    } else {
+        snprintf(BASE_DIR, sizeof(BASE_DIR), ".");
+    }
+    
+    ensure_directory_exists(BASE_DIR);
+    
+    snprintf(VERSIONS_DIR, sizeof(VERSIONS_DIR), "%s\\versions", BASE_DIR);
+    snprintf(LIBRARIES_DIR, sizeof(LIBRARIES_DIR), "%s\\libraries", BASE_DIR);
+    snprintf(ASSETS_DIR, sizeof(ASSETS_DIR), "%s\\assets", BASE_DIR);
+    snprintf(NATIVES_DIR, sizeof(NATIVES_DIR), "%s\\natives", BASE_DIR);
+    
     ensure_directory_exists(VERSIONS_DIR);
-    char version_path[128];
-    snprintf(version_path, sizeof(version_path), "%s/%s", VERSIONS_DIR, version_id);
-    ensure_directory_exists(version_path);
+    ensure_directory_exists(LIBRARIES_DIR);
+    ensure_directory_exists(ASSETS_DIR);
+    ensure_directory_exists(NATIVES_DIR);
 }
 
 char *read_file(const char *filename) {
@@ -259,9 +275,9 @@ void parse_manifest(const char *json_data, const char *version_input, const char
         cJSON *url = cJSON_GetObjectItemCaseSensitive(version, "url");
         if (cJSON_IsString(id) && strcmp(id->valuestring, version_input) == 0) {
             if (cJSON_IsString(url)) {
-                ensure_version_dirs_exist(version_input);
                 char filename[128];
                 snprintf(filename, sizeof(filename), "%s/%s/%s.json", VERSIONS_DIR, version_input, version_input);
+                ensure_parent_dir_exists(filename);
                 download_file_immediate(url->valuestring, filename);
                 download_client_jar(filename, version_input, username);
                 found = 1;
@@ -278,6 +294,7 @@ void parse_manifest(const char *json_data, const char *version_input, const char
 }
 
 int main(int argc, char *argv[]) {
+    init_paths();
     char *version_to_launch = NULL;
     char *username = "Player";
     for (int i = 1; i < argc; i++) {
