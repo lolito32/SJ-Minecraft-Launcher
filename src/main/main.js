@@ -17,7 +17,7 @@ const createWindow = () => {
       nodeIntegration: false,
       contextIsolation: true
     },
-    title: "Mine-Launcher",
+    title: 'Mine-Launcher',
     autoHideMenuBar: true
   })
 

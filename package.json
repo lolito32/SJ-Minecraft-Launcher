@@ -26,13 +26,9 @@
     "files": [
       "src/main/**/*",
       "src/renderer/**/*",
-      "src/backend/backend.exe",
       "package.json",
       "assets/**/*",
       "icon.ico"
-    ],
-    "asarUnpack": [
-      "src/backend/backend.exe"
     ],
     "win": {
       "target": "dir",
